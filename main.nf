@@ -1109,9 +1109,9 @@ process Sentieon_MapReads {
     status = statusMap[idPatient, idSample]
     extra = status == 1 ? "-B 3" : ""
     """
-    sentieon bwa mem -K 100000000 -R \"${readGroup}\" ${extra} -t ${task.cpus} -M ${fasta} \
+    sentieon bwa mem -K 100000000 -R \"${readGroup}\" ${extra} -t 16 -M ${fasta} \
     ${inputFile1} ${inputFile2} | \
-    sentieon util sort -r ${fasta} -o ${idSample}_${idRun}.bam -t ${task.cpus} --sam2bam -i -
+    sentieon util sort -r ${fasta} -o ${idSample}_${idRun}.bam -t 16 --sam2bam -i -
     """
 }
 
